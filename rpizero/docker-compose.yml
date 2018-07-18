@@ -1,11 +1,11 @@
 version: '2'
 services:
   sensors:
+    extends:
+        file: common-services.yml
+        service: common
     image: migruiz/clima-sensors-zero
     container_name: clima-sensors
-    environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.962
-        NODEID : 2
     restart: always
     privileged: true
     
