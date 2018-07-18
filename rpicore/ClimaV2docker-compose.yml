@@ -6,18 +6,18 @@ services:
     volumes:
         - sensorsfs:/sys/fs/cgroup
     ports:
-     - "8883:8883"
+     - "1883:1883"
     restart: always
     
     
-   sensors:
+  sensors:
     image: migruiz/climav2-sensors-rpi3
     container_name: climav2-sensors
     volumes:
      - sensorsfs:/sys/fs/cgroup
     environment:
         MQTTServer : mqtt://192.168.0.137
-        NODEID : 1
+        NODEID : 4
     restart: always
     privileged: true
     
