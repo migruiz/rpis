@@ -1,0 +1,11 @@
+version: '2'
+services:
+  sensors:
+    image: migruiz/clima-sensors-zero
+    container_name: clima-sensors
+    environment:
+        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
+        NODEID : 2
+    restart: always
+    privileged: true
+    
