@@ -15,6 +15,7 @@ services:
     container_name: climav2-sensors
     volumes:
      - sensorsfs:/sys/fs/cgroup
+     - sensorsdata:/sensorsdata
     environment:
         MQTTServer : mqtt://192.168.0.137
         NODEID : 4
