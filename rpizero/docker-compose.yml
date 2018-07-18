@@ -5,7 +5,7 @@ services:
         file: common-services.yml
         service: common
     image: migruiz/clima-sensors-zero
-    container_name: clima-sensorsttt
+    container_name: clima-sensorslam
     restart: always
     privileged: true
     
