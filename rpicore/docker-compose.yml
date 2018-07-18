@@ -1,25 +1,11 @@
 version: '2'
 services:
-  rabbit:
-    image: migruiz/clima-queue-rpi3
-    container_name: clima-queue
-    ports:
-     - "5672:5672"
-     - "15672:15672"
-    restart: always
-    
   sensors:
     image: migruiz/clima-sensors-rpi3
     container_name: clima-sensors
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.137
+        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
         NODEID : 4
     restart: always
     privileged: true
     
-  datacollector:
-    image: migruiz/clima-datacollector-rpi3
-    container_name: clima-datacollector
-    environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.137
-    restart: always

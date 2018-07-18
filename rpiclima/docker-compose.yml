@@ -12,8 +12,8 @@ services:
     image: migruiz/clima-sensors-rpi3
     container_name: clima-sensors
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.137
-        NODEID : 4
+        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
+        NODEID : 1
     restart: always
     privileged: true
     
@@ -21,5 +21,5 @@ services:
     image: migruiz/clima-datacollector-rpi3
     container_name: clima-datacollector
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.137
+        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
     restart: always
