@@ -1,7 +1,7 @@
 version: '3'
 services:
   rabbit:
-    image: migruiz/migruiz/clima-queue-rpi3
+    image: migruiz/clima-queue-rpi3
     container_name: clima-queue
     ports:
      - "5672:5672"
