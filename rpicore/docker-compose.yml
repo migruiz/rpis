@@ -1,7 +1,7 @@
 version: '2'
 services:
   sensors:
-    image: migruiz/clima-sensors-rpi3
+    image: migruiz/clima-sensors-rpi3:r1
     container_name: clima-sensors
     environment:
         TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
