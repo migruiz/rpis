@@ -1,7 +1,7 @@
 version: '2'
 services:
   rabbit:
-    image: migruiz/clima-queue-rpi3
+    image: migruiz/clima-queue-rpi3:r1
     container_name: clima-queue
     volumes:
      - rabbitfs:/sys/fs/cgroup
@@ -11,7 +11,7 @@ services:
     restart: always
     
   sensors:
-    image: migruiz/clima-sensors-rpi3
+    image: migruiz/clima-sensors-rpi3:r1
     container_name: clima-sensors
     volumes:
      - sensorsfs:/sys/fs/cgroup
@@ -22,7 +22,7 @@ services:
     privileged: true
     
   datacollector:
-    image: migruiz/clima-datacollector-rpi3
+    image: migruiz/clima-datacollector-rpi3:r1
     container_name: clima-datacollector
     volumes:
      - datacollectorfs:/sys/fs/cgroup
@@ -31,7 +31,7 @@ services:
     restart: always
     
   boiler:
-    image: migruiz/clima-boiler-rpi3
+    image: migruiz/clima-boiler-rpi3:r1
     container_name: clima-boiler
     volumes:
      - boilerfs:/sys/fs/cgroup
