@@ -16,7 +16,7 @@ services:
     volumes:
      - sensorsfs:/sys/fs/cgroup
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
+        TEMPQUEUEURL : amqp://pi:pi@clima-queue
         NODEID : 1
     restart: always
     privileged: true
@@ -27,7 +27,7 @@ services:
     volumes:
      - datacollectorfs:/sys/fs/cgroup
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
+        TEMPQUEUEURL : amqp://pi:pi@clima-queue
     restart: always
     
   boiler:
@@ -36,6 +36,6 @@ services:
     volumes:
      - boilerfs:/sys/fs/cgroup
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
+        TEMPQUEUEURL : amqp://pi:pi@clima-queue
     restart: always
     privileged: true
