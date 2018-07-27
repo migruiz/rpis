@@ -4,10 +4,9 @@ services:
     image: migruiz/clima-sensors-rpi3:r1
     container_name: clima-sensors
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.0.96
+        TEMPQUEUEURL : amqp://pi:pi@192.168.1.6
         NODEID : 4
     volumes:
         - sensorsfs:/sys/fs/cgroup
     restart: always
     privileged: true
-    
