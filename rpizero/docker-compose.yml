@@ -4,7 +4,7 @@ services:
     image: migruiz/clima-sensors-zero:r1
     container_name: clima-sensors
     environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.1.6
+        TEMPQUEUEURL : amqp://pi:pi@192.168.1.14
         NODEID : 2
     volumes:
      - sensorsfs:/sys/fs/cgroup

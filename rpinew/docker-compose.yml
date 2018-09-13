@@ -1,12 +1,41 @@
 version: '2'
 services:
+  rabbit:
+    image: migruiz/clima-queue-rpi3:r1
+    container_name: clima-queue
+    volumes:
+     - rabbitfs:/sys/fs/cgroup
+    ports:
+     - "5672:5672"
+     - "15672:15672"
+    restart: always
+    
   sensors:
     image: migruiz/clima-sensors-rpi3:r1
     container_name: clima-sensors
-    environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.1.6
-        NODEID : 4
     volumes:
-        - sensorsfs:/sys/fs/cgroup
+     - sensorsfs:/sys/fs/cgroup
+    environment:
+        TEMPQUEUEURL : amqp://pi:pi@clima-queue
+        NODEID : 1
+    restart: always
+    privileged: true
+    
+  datacollector:
+    image: migruiz/clima-datacollector-rpi3:r1
+    container_name: clima-datacollector
+    volumes:
+     - datacollectorfs:/sys/fs/cgroup
+    environment:
+        TEMPQUEUEURL : amqp://pi:pi@clima-queue
+    restart: always
+    
+  boiler:
+    image: migruiz/clima-boiler-rpi3:r1
+    container_name: clima-boiler
+    volumes:
+     - boilerfs:/sys/fs/cgroup
+    environment:
+        TEMPQUEUEURL : amqp://pi:pi@clima-queue
     restart: always
     privileged: true
