@@ -22,7 +22,7 @@ services:
     
   datacollector:
     image: migruiz/clima-datacollector-rpi3:climav2
-    container_name: clima-datacollector
+    container_name: clima-datacollector-climav2
     volumes:
      - datacollectorfs:/sys/fs/cgroup
     environment:
