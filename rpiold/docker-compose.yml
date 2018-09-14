@@ -20,3 +20,12 @@ services:
     restart: always
     privileged: true
     
+  datacollector:
+    image: migruiz/clima-datacollector-rpi3:climav2
+    container_name: clima-datacollector
+    volumes:
+     - datacollectorfs:/sys/fs/cgroup
+    environment:
+        MQTTLOCAL : mqtt://clima-queue-climav2
+    restart: always
+    
