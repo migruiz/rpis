@@ -1,12 +1,22 @@
 version: '2'
 services:
-  sensors:
-    image: migruiz/clima-sensors-rpi3:r1
-    container_name: clima-sensors
-    environment:
-        TEMPQUEUEURL : amqp://pi:pi@192.168.1.14
-        NODEID : 4
+  mqtt:
+    image: migruiz/clima-queue-rpi3:climav2
+    container_name: clima-queue-climav2
     volumes:
-        - sensorsfs:/sys/fs/cgroup
+     - mqttfs:/sys/fs/cgroup
+    ports:
+     - "1883:1883"
+    restart: always
+    
+  sensors:
+    image: migruiz/clima-sensors-rpi3:climav2
+    container_name: clima-sensors-climav2
+    volumes:
+     - sensorsfs:/sys/fs/cgroup
+    environment:
+        MQTTLOCAL : mqtt://clima-queue-climav2
+        NODEID : 1
     restart: always
     privileged: true
+    
